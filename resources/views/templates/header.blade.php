@@ -58,7 +58,7 @@
                 <!-- Sidebar menu starts -->
                 <div class="sidebarMenuScroll">
                     <ul class="sidebar-menu">
-                        <li class="{{ request()->is('dashboard') ? 'active current-page' : '' }} my-2">
+                        <li class="{{ request()->is('dashboard') || request()->is('/') ? 'active current-page' : '' }} my-2">
                             <a href="{{ url('dashboard') }}">
                                 <i class="bi bi-house"></i>
                                 <span class="menu-text">Dashboard</span>
@@ -130,7 +130,9 @@
                             <a href="{{ url('dashboard') }}" class="text-decoration-none">Home</a>
                         </li>
                         <li class="breadcrumb-item text-secondary">
-                            @if(request()->is('dashboard'))
+                            @if(request()->is('/'))
+                            Dashboard
+                            @elseif(request()->is('dashboard'))
                             Dashboard
                             @elseif(request()->is('catatan'))
                             Catatan Perjalanan

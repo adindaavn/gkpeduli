@@ -41,6 +41,9 @@
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-penduduk">
                             <i class="bi bi-plus-lg"></i> Daftar Penduduk
                         </button>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#import-penduduk">
+                            <i class="bi bi-file-earmark-spreadsheet"></i> Import Excel
+                        </button>
                         <div class="table-responsive mt-3">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>

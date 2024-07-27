@@ -72,7 +72,7 @@
       modal.find('.modal-title').text('Edit Data Penduduk')
       modal.find('#nama').val(nama)
       modal.find('#nik').val(nik)
-      modal.find('#jk').val(jk)
+      modal.find('input[name="jk"][value="' + jk + '"]').prop('checked', true);
       modal.find('#alamat').val(alamat)
       modal.find('.modal-content form').attr('action', '{{ url("/penduduk") }}/' + id)
       modal.find('#method').html('@method("PATCH")')

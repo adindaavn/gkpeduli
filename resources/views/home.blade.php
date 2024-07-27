@@ -32,7 +32,7 @@
                                 <p class="mb-2 lh-1 d-flex align-items-center">
                                 </p>
                                 <h2 class="fw-bold mb-2">Catatan Perjalanan</h2>
-                                <h6 class="m-0 fw-normal opacity-50 mb-2">Liat catatan perjalananmu</h6>
+                                <h6 class="m-0 fw-normal opacity-50 mb-2">Lihat catatan perjalananmu</h6>
                                 <a href="{{ url('catatan') }}" type="button" class="btn btn-outline-info m-3 float-md-end">
                                     <i class="bi bi-arrow-up-right"></i>
                                 </a>
@@ -46,14 +46,14 @@
                     <div class="card-body">
                         <div class="d-flex flex-row">
                             <div class="icon-box lg col-3 rounded-3 bg-light">
-                                <i class="bi bi-stickies text-info fs-2"></i>
+                                <i class="bi bi-people text-info fs-2"></i>
                             </div>
                             <div class="mx-4 col-9">
                                 <p class="mb-2 lh-1 d-flex align-items-center">
                                 </p>
-                                <h2 class="fw-bold mb-2">Buat Catatan</h2>
-                                <h6 class="m-0 fw-normal opacity-50 mb-2">Tambah catatan perjalananmu</h6>
-                                <a href="{{ url('catatan') }}" class="btn btn-outline-info m-3 float-md-end">
+                                <h2 class="fw-bold mb-2">Daftar Penduduk</h2>
+                                <h6 class="m-0 fw-normal opacity-50 mb-2">Periksa daftar penduduk</h6>
+                                <a href="{{ url('penduduk') }}" class="btn btn-outline-info m-3 float-md-end">
                                     <i class="bi bi-arrow-up-right"></i>
                                 </a>
                             </div>

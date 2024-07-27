@@ -63,4 +63,44 @@
         </div>
     </div>
 </div>
-<!-- End Modal -->
+
+<!-- import Modal -->
+<div class="modal fade" id="import-catatan" tabindex="-1" role="dialog" aria-labelledby="import-catatanLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Import Excel</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border: none; background-color: transparent;">
+                    <span aria-hidden="true"><i class="bi bi-x-lg"></i></span>
+                </button>
+            </div>
+            <form action="{{ route('import-catatan') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="m-2">
+                            <label class="form-label" for="import">File Excel</label>
+                            <input type="file" name="import" id="import" class="form-control @error('import') is-invalid @enderror" />
+                            <p class="m-1 text-secondary">
+                                heading rows format = Tanggal, Waktu, Lokasi, Suhu Tubuh
+                                <br>
+                                data diambil mulai dari row ke-tiga
+                            </p>
+                            @error('import')
+                            <div class="alert alert danger p-0 ">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <div class="modal-footer justify-content-between mx-2">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info">Upload</button>
+                </div>
+            </form>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+</div>

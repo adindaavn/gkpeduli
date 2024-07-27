@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CatatanImport;
 use App\Models\CatatanPerjalanan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CatatanPerjalananController extends Controller
 {
@@ -98,5 +100,21 @@ class CatatanPerjalananController extends Controller
         $catatan->delete();
 
         return redirect('catatan')->with(['success' => 'Catatan berhasil dihapus!']);
+    }
+
+
+    public function importData(Request $request)
+    {
+
+        // dd($request->all);
+        $request->validate([
+            'import' => 'required|file|mimes:xlsx,csv,xls|max:2048'
+        ]);
+
+        $file = $request->file('import');
+
+        Excel::import(new CatatanImport, $file);
+
+        return redirect()->back()->with('success', 'Import data berhasil!');
     }
 }

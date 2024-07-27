@@ -6,6 +6,8 @@ use App\Models\Penduduk;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PendudukImport;
 
 class PendudukController extends Controller
 {
@@ -36,7 +38,7 @@ class PendudukController extends Controller
             'nik'       => 'required|numeric|unique:penduduks,nik',
             'nama'      => 'required|max:100',
             'alamat'    => 'required',
-            'jk'        => 'required'
+            'jk'        => 'required|in:L,P'
         ]);
 
         Penduduk::create([
@@ -75,7 +77,7 @@ class PendudukController extends Controller
             'nik' => 'required|numeric|unique:penduduks,nik,' . $id, // Unique validation excluding current ID
             'nama' => 'required|max:100',
             'alamat' => 'required',
-            'jk' => 'required'
+            'jk' => 'required|in:L,P'
         ]);
 
         $penduduk = Penduduk::findOrFail($id); 
@@ -102,4 +104,20 @@ class PendudukController extends Controller
 
         return redirect('penduduk')->with(['success' => 'Penduduk berhasil dihapus!']);
     }
+
+    public function importData(Request $request)
+    {
+
+        // dd($request->all);
+        $request->validate([
+            'import' => 'required|file|mimes:xlsx,csv,xls|max:2048'
+        ]);
+
+        $file = $request->file('import');
+
+        Excel::import(new PendudukImport, $file);
+
+        return redirect()->back()->with('success', 'Import data berhasil!');
+    }
+    
 }
